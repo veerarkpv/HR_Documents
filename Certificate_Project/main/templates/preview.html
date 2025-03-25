@@ -1,0 +1,49 @@
+<form action="{% url 'generate_pdf' %}" method="post" id="downloadForm" target="hidden_iframe">
+    {% csrf_token %}
+    <input type="hidden" name="doc_type" value="{{ doc_type }}">
+
+    <!-- ✅ Loop through all form data dynamically -->
+    {% for key, value in form_data.items %}
+        <input type="hidden" name="{{ key }}" id="form_{{ key }}" value="{{ value }}">
+    {% endfor %}
+
+    <button type="button" class="btn download-btn" onclick="updateAndSubmit()">Download PDF</button>
+</form>
+
+<!-- ✅ Invisible iframe to track the download without reloading the page -->
+<iframe id="hidden_iframe" name="hidden_iframe" style="display:none;"></iframe>
+
+<script>
+    function updateAndSubmit() {
+        // ✅ Loop through all hidden input fields and update their values dynamically
+        let fields = document.querySelectorAll("[id^='form_']");
+        fields.forEach(function (field) {
+            let key = field.name;
+            let spanElement = document.getElementById(key);
+            if (spanElement) {
+                field.value = spanElement.innerText.trim(); // ✅ Capture edited values dynamically
+            }
+        });
+
+        // ✅ Submit the form using an invisible iframe to prevent page reload
+        let form = document.getElementById("downloadForm");
+        form.submit();
+
+        // ✅ Start checking for the download_complete cookie
+        checkDownloadCompletion();
+    }
+
+    function checkDownloadCompletion() {
+        let interval = setInterval(function() {
+            console.log("Checking for download_complete cookie...");
+            let cookies = document.cookie;
+
+            if (cookies.includes("download_complete=true")) {
+                clearInterval(interval); // Stop checking
+                document.cookie = "download_complete=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; // ✅ Clear cookie
+                console.log("✅ Download complete! Redirecting to success page...");
+                window.location.href = "{% url 'success' %}"; // ✅ Redirect to success page
+            }
+        }, 1000); // Check every 1 second
+    }
+</script>

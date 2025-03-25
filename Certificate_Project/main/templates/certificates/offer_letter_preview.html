@@ -1,0 +1,341 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offer Letter</title>
+    <style>
+        @page {
+            size: A4; /* A4 Page Size */
+            margin: 0; /* Remove default margins */
+
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+			display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .page {
+            width: 21cm;
+            height: 29.7cm;
+            position: relative;
+            background: url("{% static 'images/offer_letter_bg.png' %}") no-repeat center center;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center; /* Center align text */
+            box-sizing: border-box;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 3.5cm 1.5cm; /* Adjust padding as per text alignment */
+            box-sizing: border-box;
+            page-break-after: always;
+        }
+        .content {
+            position: relative;
+            z-index: 2;
+            text-align: justify;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #000;
+        }
+        .footer {
+            font-size: 12px;
+            text-align: right;
+            position: absolute;
+            bottom: 1cm;
+            left: 0;
+            right: 0;
+        }
+        .date{
+            text-align: right;
+            color: #000;
+        }
+                /* Button Container */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 8px 16px;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .edit-btn {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .save-btn {
+            background-color: #28a745;
+            color: white;
+            display: none; /* Hidden initially */
+        }
+
+        .download-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        /* Download Wrapper */
+        .download-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Editable Fields */
+        .editable {
+            padding: 4px;
+            border: none;
+            outline: none;
+        }
+
+        /* Editable Field - When in Edit Mode */
+        .editable[contenteditable="true"] {
+            border: 1px dashed #ccc;
+            background-color: #f9f9f9;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Page 1 -->
+    <div class="page">
+        <div class="content editable">
+            <h1>OFFER LETTER</h1>
+            <p class="date" data-field="cert_date"><strong>Date :</strong> {{cert_date}}</p>
+            <p class="date"><strong>Place:</strong> Chennai</p>
+
+            <p><strong>Dear</strong> <strong data-field="recipient_name">{{recipient_name}}</strong>,</p>
+            <p style="padding-left: 40px;">We are pleased to offer you a <strong>Full-Time Position </strong>at <strong>T-Machine Software Solutions Pvt Ltd</strong>. Your designation is <strong data-field="position">{{position}}.</strong>
+            <h4>1.	Commencement of Employment:</h4>
+            <p style="padding-left: 40px;">Your employment will be effective as of <strong>MONDAY, 2nd SEP 2024</strong>, and your reporting time is <strong>10:00 AM</strong>. You must report to our HR Executive at our Software R & D Office located in OMR, Chennai.</p>
+            <h4>2.	Salary:</h4>
+            <p style="padding-left: 40px;">As an <strong data-field="position">{{position}}</strong>, you will be entitled to an <strong>Annual CTC of ₹3,28,000/</strong>- (Rupees Three Lakhs Twenty-Eight Thousand only). This amount includes an <strong>Annual Fixed Bonus of ₹52,000/</strong>- (Rupees Fifty-Two Thousand only). Please refer to Section-4.2 and the Salary Breakup in <strong>Annexure-A</strong>.</p>
+
+            <h4>3.	Probation:</h4>
+            <p style="padding-left: 40px;"> 3.1.	Probation Period: You will be on probation for four months from your joining date</p>.
+            <p style="padding-left: 40px;"> 3.2.	Salary During Probation: During this period, you will receive a remuneration of ₹12,000 per month (Rupees Twelve Thousand Only). Regular reviews will be conducted to assess your performance and soft skills, which will determine the successful completion of your probation.</p>
+
+            <h4>4.	Salary After Probation: </h4>
+            <p style="padding-left: 40px;"> 4.1.	Your employment shall be made permanent after the successful completion of probation. Completion of probation in T-Machine depends on your own individual performance towards your work, your soft skill attitude and most importantly your timely communication standard.</p>
+            <p style="padding-left: 40px;"> 4.2.	After the Probation period for next 12 months your monthly gross salary will be ₹22,220 per month (Rupees Twenty-Two Thousand Two Hundred and Twenty Only). Where you will receive an Annual Fixed Bonus of ₹52,000/- (Rupees Fifty-Two Thousand only) at the completion of the next 12 months of your employment.</p>
+         </div>
+        <div class="footer">Page 1 of 6</div>
+    </div>
+
+    <!-- Page 2 -->
+    <div class="page">
+        <div class="content editable">
+            <p style="padding-left: 40px;"> 4.3.	For the subsequent year (which means from 13th month from the completion of your probation period), your Salary will be minimum revised to an Annual CTC of ₹4,64,000/- (Rupees Four Lakhs Sixty-Four Thousand only). This amount includes an Annual Fixed Bonus of ₹68,000/- (Rupees Sixty-Eight Thousand only), where you will receive this bonus at the end of the subsequent year of your employment.</p>
+            <h4>5.	Job Location: </h4>
+            <p style="padding-left: 40px;"> 5.1.	During your probationary period, you will be Working from Office. </p>
+            <p style="padding-left: 40px;"> 5.2.	Upon successful completion of probation, you will transition to a Full-Time Permanent Employee role. Subsequently, you will be required to report to our projects as assigned. From that point forward, you will primarily be based at our R&D office in Chennai.</p>
+            <p style="padding-left: 40px;"> 5.3.	There might be an onsite project at the client's location during your employment.</p>
+            <p style="padding-left: 40px;"> 5.4.	Depending on the nature and requirements of specific client projects, there may be occasions to work on-site at other locations.</p>
+            <h4>6.	Hours of Work </h4>
+            <p style="padding-left: 40px;"> 6.1.	The normal working days are Monday to Friday (9:00 AM to 6:00 PM)</p>
+            <p style="padding-left: 40px;"> 6.2.	You are expected to dedicate a minimum of 40 hours each week to effectively fulfill your responsibilities to the Company. However, based on the demands of your role, there may be times when additional hours are necessary to ensure the proper discharge of your duties. </p>
+            <h4>7.	Leave/Holidays </h4>
+            <p style="padding-left: 40px;"> 7.1.	During Probation,</p>
+            <p style="padding-left: 80px;">7.1.1.	You have Two days (Saturday & Sunday) as a weekly holiday as per the schedule.</p>
+            <p style="padding-left: 80px;">7.1.2.	The company shall notify a list of declared holidays at the beginning of each year.</p>
+            <p style="padding-left: 80px;">7.1.3.	You are not allowed to take any leaves, failing which it will be considered as a Loss of Pay.</p>
+            <p style="padding-left: 40px;"> 7.2.	On successful completion of the probation period,</p>
+            <p style="padding-left: 80px;">7.2.1.	 You are entitled to an Earned leave of one day per month since your commencement of employment. Accumulated Earned leaves shall be carried forward to the next Calendar year.</p>
+            </div>
+        <div class="footer">Page 2 of 6</div>
+    </div>
+
+    <!-- Page 3 -->
+    <div class="page">
+        <div class="content editable">
+            <p style="padding-left: 80px;">7.2.2.	You are entitled to a Sick leave of one day every two months. Accumulated Sick leaves shall not be carried forward to the next financial year.</p>
+            <p style="padding-left: 80px;">7.2.3.	Taking leaves without any leave balance is considered a Loss of Pay.</p>
+            <h4> 8.	 Nature of duties </h4>
+            <p style="padding-left: 40px;"> 8.1.	You are expected to consistently deliver your best efforts in executing all responsibilities related to your position. This includes:</p>
+            <p style="padding-left: 80px;">8.1.1.	Adherence to Standards: Uphold and adhere to the software development and operational standards always set by the company.</p>
+            <p style="padding-left: 80px;">8.1.2.	Continuous Learning: In the ever-evolving software industry, you are expected to keep abreast of emerging trends and technologies relevant to your role.</p>
+            <p style="padding-left: 80px;">8.1.3.	Team Collaboration: Work closely with team members, ensuring a seamless flow of communication and collaboration.</p>
+            <p style="padding-left: 80px;">8.1.4.	Timely Deliverables: Ensure that all tasks and projects are completed within the stipulated timelines, maintaining the highest standards of quality.</p>
+            <p style="padding-left: 80px;">8.1.5.	Adaptability: Be prepared to adapt to dynamic project requirements, as the nature of software development can be fluid and frequently changing.</p>
+            <p style="padding-left: 80px;">8.1.6.	Additional Duties: Apart from the inherent duties of your post, the company might assign you additional responsibilities from time to time. It is imperative that you approach these with the same dedication and professionalism as your core tasks.</p>
+            <p style="padding-left: 80px;">8.1.7.	Code of Conduct: Abide by the company's code of conduct, ethical standards, and best practices always.</p>
+            <p style="padding-left: 40px;"> 8.2.	Your proactive commitment, adaptability, and unwavering professionalism will be pivotal in navigating the early stages of your software career with our company</p>
+            <h4>9.	Company property</h4>
+            <p style="padding-left: 40px;">You will always maintain the Company property in good condition, which may be entrusted to you for official use during your employment and shall return all such property to the Company before relinquishment of your charge, failing which the cost of the same will be recovered from you by the Company.</p>
+
+        </div>
+        <div class="footer">Page 3 of 6</div>
+    </div>
+
+    <!-- Page 4 -->
+    <div class="page">
+        <div class="content editable">
+            <h4>10.	Borrowing/accepting gifts</h4>
+            <p style="padding-left: 40px;">You will not borrow or accept any money, gift, reward or compensation for your personal gains from or otherwise place yourself under pecuniary obligation to any person/client with whom you may be having official dealings.</p>
+
+            <h4>11.	Termination</h4>
+            <p style="padding-left: 40px;"> 11.1.	Your appointment can be terminated by the Company, without any reason, with immediate effect if you are incapable to follow the pace of the work or training and has poor learning ability and work performance.</p>
+            <p style="padding-left: 40px;"> 11.2.	You may terminate your employment with the Company, by giving no less than 2 months prior notice or salary for an unsaved period, left after adjustment of pending leaves, as on date.</p>
+            <p style="padding-left: 40px;"> 11.3.	The Company reserves the right to terminate your employment summarily without any notice period or termination payment if it has reasonable ground to believe you are guilty of misconduct or negligence or have committed any fundamental breach of contract or caused any loss to the Company.</p>
+            <p style="padding-left: 40px;"> 11.4.	On the termination of your employment for whatever reason, you will return to the Company, all property, documents and paper, both original and copies thereof, including any samples, literature, contracts, records, lists, drawings, blueprints, letters, notes, data and the like; and Confidential Information, in your possession or under your control relating to your employment or client’s business affairs. </p>
+
+            <h4>12.	Confidential Information</h4>
+            <p style="padding-left: 40px;"> 12.1.	During your employment with the Company, you will devote your whole time, attention and skill to the best of your ability for its business. You shall not, directly or indirectly, engage or associate yourself with, relate to, concerned, employed or engaged in any other business or activities or any other post or work part-time or pursue any course of study whatsoever, without the prior permission of the Company.</p>
+            <p style="padding-left: 40px;"> 12.2.	You must always maintain the highest degree of confidentiality and keep as confidential the records, documents and other Confidential Information relating to the business of the Company which may be known to you or confided in you by any means and you will use such records, documents and information only in a duly authorized manner in the interest of the Company. For this clause ‘Confidential Information means information about the Company’s business and that of its customers which is not available to the general public and which may be learnt by you in the course of your employment. </p>
+        </div>
+        <div class="footer">Page 4 of 6</div>
+    </div>
+
+    <!-- Page 5 -->
+    <div class="page">
+        <div class="content editable">
+            <p style="padding-left: 40px;">This includes, but is not limited to, information relating to the organization, its customer lists, employment policies, personnel, and information about the Company’s products, processes including ideas, concepts, projections, technology, manuals, drawing, designs, specifications, and all papers, resumes, records and other documents containing such Confidential Information.</p>
+            <p style="padding-left: 40px;"> 12.3.	At no time, will you remove any Confidential Information from the office without permission.</p>
+            <p style="padding-left: 40px;"> 12.4.	Your duty to safeguard and not disclose Confidential Information will survive the expiration or termination of this Agreement and/or your employment with the Company. </p>
+            <h4>13.	Notices</h4>
+            Notices may be given by you to the Company at its registered office address. Notices may be given by the Company to you at the address intimated by you in the official records.</p>
+            <h4>14.	Applicability of Company Policy</h4>
+            <p style="padding-left: 40px;"> The Company shall be entitled to make policy declarations from time to time about manners like leave entitlement, maternity leave, employee benefits, working hours, transfer policies, etc., and may alter the same from time to time at its sole discretion. All such policy decisions of the Company shall be binding on you and shall override this Agreement to that extent.</p>
+            <h4>15.	Governing Law/Jurisdiction</h4>
+            <p style="padding-left: 40px;"> Your employment with the Company is subject to Indian laws. All disputes shall be subject to the jurisdiction of the High Court of Tamil Nadu only.</p>
+            <h4>16.	Offer Acceptance</h4>
+            <p style="padding-left: 40px;"> Please confirm your acceptance of this Contract of Employment by signing and returning the duplicate copy.
+            <p style="padding-left: 40px;">We welcome you and look forward to receiving your acceptance and to working with you.</p>
+            <p><h5 style="text-align: left;">Employee Name	:</h5> <h5 style="text-align: right;">sincerely,</h5></p>
+            <p><h5 style="text-align: left;"></h5>Employee Signature	:</h5></p>
+            <p><h5 style="text-align: left;">Date			:</h5> <h5 style="text-align: right;">Human Resource Manager</h5></p>
+            <p><h5 style="text-align: left;">Place			:</h5><h5 style="text-align: right;">Authorized Signatory</h5></p>
+
+        </div>
+        <div class="footer">Page 5 of 6</div>
+    </div>
+
+    <!-- Page 6 -->
+    <div class="page">
+        <div class="content editable">
+            XXXXXXX
+        </div>
+        <div class="footer">Page 6 of 6</div>
+    </div>
+    {% if not for_pdf %}  <!-- This will be hidden in PDF -->
+    <div class="button-container">
+        <button class="btn edit-btn" id="editButton" onclick="toggleEdit()">Edit</button>
+        <button class="btn save-btn" id="saveButton" onclick="saveChanges()">Save</button>
+        
+        <div class="download-wrapper">
+            <form method="post" id="downloadForm" action="{% url 'generate_pdf' %}" target="pdfDownloadFrame">
+                {% csrf_token %}
+                <input type="hidden" name="doc_type" value="offer_letter">
+                <input type="hidden" name="recipient_name" id="formRecipientName">
+                <input type="hidden" name="cert_date" id="formCertDate">
+                <input type="hidden" name="join_date" id="formJoinDate">
+                <input type="hidden" name="position" id="formPosition">
+                <input type="hidden" name="work_mode" id="formWorkMode">
+                <input type="hidden" name="ctc" id="formCTC">
+                <input type="hidden" name="verification_code" id="formVerificationCode">
+                
+                <button type="button" class="btn download-btn" onclick="prepareDownload()">
+                    Download PDF
+                </button>
+            </form>
+            <iframe name="pdfDownloadFrame" style="display: none;"></iframe>
+        </div>
+    </div>
+
+    <iframe name="hiddenFrame" style="display:none;"></iframe>
+{% endif %}
+
+<script>
+    // Enable Editing
+    function toggleEdit() {
+        const editables = document.querySelectorAll('.editable');
+        editables.forEach(field => {
+            field.contentEditable = 'true';
+            field.style.border = '1px dashed #ccc';
+        });
+        document.getElementById('editButton').style.display = 'none';
+        document.getElementById('saveButton').style.display = 'inline-block';
+    }
+
+    // Save Changes
+    function saveChanges() {
+        const editables = document.querySelectorAll('.editable');
+        editables.forEach(field => {
+            field.contentEditable = 'false';
+            field.style.border = 'none';
+        });
+        document.getElementById('editButton').style.display = 'inline-block';
+        document.getElementById('saveButton').style.display = 'none';
+    }
+
+    // Prepare Download - Fetch latest edited content
+    function prepareDownload() {
+        const fields = {
+            'recipient_name': document.querySelector('[data-field="recipient_name"]'),
+            'cert_date': document.querySelector('[data-field="cert_date"]'),
+            'join_date': document.querySelector('[data-field="join_date"]'),
+            'position': document.querySelector('[data-field="position"]'),
+            'work_mode': document.querySelector('[data-field="work_mode"]'),
+            'ctc': document.querySelector('[data-field="ctc"]'),
+            'verification_code': document.querySelector('[data-field="verification_code"]')
+        };
+
+        // Update hidden inputs
+        document.getElementById('formRecipientName').value = fields.recipient_name?.innerText.trim() || '';
+        document.getElementById('formCertDate').value = fields.cert_date?.innerText.trim() || '';
+        document.getElementById('formJoinDate').value = fields.join_date?.innerText.trim() || '';
+        document.getElementById('formPosition').value = fields.position?.innerText.trim() || '';
+        document.getElementById('formWorkMode').value = fields.work_mode?.innerText.trim() || '';
+        document.getElementById('formCTC').value = fields.ctc?.innerText.trim() || '';
+        document.getElementById('formVerificationCode').value = fields.verification_code?.innerText.trim() || '';
+
+        // Submit the form
+        const form = document.getElementById('downloadForm');
+        form.submit();
+
+        // Start checking for download completion
+        checkDownloadStatus();
+    }
+
+    // Check if PDF download is complete
+    function checkDownloadStatus() {
+        let checks = 0;
+        const maxChecks = 10; // 10 seconds timeout
+        const interval = setInterval(() => {
+            checks++;
+            const cookieFound = document.cookie.split(';').some(cookie => {
+                return cookie.trim().startsWith('download_complete=');
+            });
+
+            if (cookieFound || checks >= maxChecks) {
+                clearInterval(interval);
+                document.cookie = 'download_complete=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                if (checks < maxChecks) {
+                    window.location.href = "{% url 'success' %}";
+                }
+            }
+        }, 1000);
+    }
+</script>
+
+</body>
+</html>

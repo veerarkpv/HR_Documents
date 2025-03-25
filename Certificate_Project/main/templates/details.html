@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Details</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 400px;
+        }
+        label {
+            font-size: 16px;
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 2px solid #007BFF;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 15px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Enter Details for {{ doc_type }}</h2>
+        <form action="{% url 'preview' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="doc_type" value="{{ doc_type }}">
+            
+            {% if doc_type == "offer_letter" %}
+                <label>Candidate Name:</label> <input type="text" name="recipient_name" required>
+                <label>Certificate Date:</label> <input type="date" name="cert_date" required>
+                <label>Joining Date:</label> <input type="date" name="join_date" required>
+                <label>Position:</label> <input type="text" name="position" required>
+                <label>Work Mode:</label> <input type="text" name="work_mode">
+                <label>CTC:</label> <input type="text" name="ctc">
+                <label>Verification Code:</label> <input type="text" name="verification_code">
+            
+            {% elif doc_type == "appointment_letter" %}
+                <label>Candidate Name:</label> <input type="text" name="recipient_name" required>
+                <label>Certificate Date & Time:</label> <input type="date" name="cert_date" required>
+                <label>Reporting Date:</label> <input type="date" name="report_date">
+                <label>Joining Date & Time:</label> <input type="datetime-local" name="join_date" required>
+                <label>Work Mode:</label> <input type="text" name="work_mode">
+                <label>CTC:</label> <input type="text" name="ctc">
+                <label>Verification Code:</label> <input type="text" name="verification_code">
+            
+            {% elif doc_type == "nda" %}
+                <label>Name:</label> <input type="text" name="recipient_name" required>
+                <label>Address:</label> <input type="text" name="address" required>
+                <label>Verification Code:</label> <input type="text" name="verification_code">
+            
+            {% elif doc_type == "cpci" %}
+                <label>Name:</label> <input type="text" name="recipient_name" required>
+                <label>Start Date:</label> <input type="date" name="start_date">
+                <label>End Date:</label> <input type="date" name="end_date" required>
+                <label>Verification Code:</label> <input type="text" name="verification_code">
+            
+            {% elif doc_type == "internship" %}
+                <label>Name:</label> <input type="text" name="recipient_name" required>
+                <label>Duration:</label> <input type="text" name="duration" required>
+                <label>Verification Code:</label> <input type="text" name="verification_code">
+
+
+            {% elif doc_type == "pay_slip" %}
+                <label>Name:</label> <input type="text" name="recipient_name" required>
+                <label>CTC:</label> <input type="text" name="ctc" required>
+                <label>Salary:</label> <input type="text" name="salary" required>
+                <label>Verification Code:</label> <input type="text" name="verification_code">
+            {% endif %}
+                
+            <button type="submit">Preview</button>
+        </form>
+    </div>
+</body>
+</html>

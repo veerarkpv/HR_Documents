@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap');
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f8f8;
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .certificate {
+            width: 1000px;
+            height: 600px;
+            background: white;
+            border: 10px solid #d1a347;
+            position: relative;
+            padding: 40px;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+            overflow: hidden;         
+            
+        }
+        .top-banner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to right, #36d198, #39a379);
+            clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+        }
+        .gold-ribbon {
+            position: absolute;
+            top: 30px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #d1a347, #f5c16c);
+            clip-path: polygon(0 0, 100% 0, 70% 100%, 0% 70%);
+        }
+        .header {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .header h1 {
+            font-size: 50px;
+            font-family: 'Playfair Display', serif;
+            color: #002c5f;
+            margin-bottom: 5px;
+        }
+        .header h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0;
+        }
+        .content {
+            text-align: center;
+            margin: 30px 50px;
+        }
+        .content p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .recipient {
+            font-size: 100px;
+            font-family: 'Great Vibes', cursive;
+            font-weight: bold;
+            color: #d1a347;
+            margin: 20px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .details {
+            text-align: center;
+            font-size: 16px;
+            line-height: 1.5;
+            position: relative;
+            z-index: 1;
+        }
+        .signature {
+            position: absolute;
+            bottom: 50px;
+            left: 80px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            
+        }
+        .verification {
+            position: absolute;
+            bottom: 50px;
+            right: 80px;
+            font-size: 14px;
+            text-align: right;
+        }
+        .award {
+            position: absolute;
+            top: 30%;
+            right: 80px;
+            background: rgba(255, 217, 0, 0.795);
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+        }
+        .border-box {
+            position: absolute;
+            top: 90px;
+            left: 90px;
+            width: 920px;
+            height: 440px;
+            border: 3px solid #d1a347;
+        }
+        .logo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 120px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .edit-btn {
+            background: #f0ad4e;
+            color: white;
+        }
+        .save-btn {
+            background: #337ab7;
+            color: white;
+            display: none;
+        }
+        .download-btn {
+            background: #5cb85c;
+            color: white;
+        }
+        .editable {
+            border: none;
+            background: transparent;
+            font-size: inherit;
+            text-align: center;
+            width: 100%;
+        }
+        .button-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .download-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="certificate">
+        <div class="top-banner"></div>
+        <div class="gold-ribbon"></div>
+        <img src="logo.png" class="logo" alt="T-Machine Logo">
+        <div class="border-box"></div>
+        <div class="header">
+            <h1>CERTIFICATE</h1>
+            <h3>OF COMPLETION</h3>
+        </div>
+        <div class="content">
+            <p>This is to certify that</p>
+            <p contenteditable="false" class="recipient editable"  data-field="recipient_name">{{recipient_name}}</p>
+            <p contenteditable="false" class="details editable">has successfully completed the <b>CPCI (Crack the Python Coding Interview)</b> Module-1 program, an intensive course offered by <b>T-Machine</b>, focused on mastering Python programming from <b data-field="start_date">{{start_date}}</b> to <b data-field="end_date">{{end_date}}</b>. 
+                <br> Throughout this period, proficiency in Python concepts and skills was consistently demonstrated, with all assignments submitted on time, showcasing effective preparation for Python coding interviews and reflecting strong dedication and technical aptitude.</p>
+        </div>
+        <div class="signature">
+            <p contenteditable="false" class="editable">Rajkumar Kaliamoorthy<br>Director of Software Engineering<br>T-Machine Software Solutions Pvt Ltd</p>
+        </div>
+        <div class="verification">
+            <p contenteditable="false" class="editable"><b>Verification Code:</b> 
+                <span data-field="verification_code">{{ verification_code }}</span></p>
+        </div>
+        <div class="award">BEST AWARD 2024</div>
+    </div>
+    {% if not for_pdf %}  <!-- This will be hidden in PDF -->
+    <div class="button-container">
+        <button class="btn edit-btn" id="editButton" onclick="toggleEdit()">Edit</button>
+        <button class="btn save-btn" id="saveButton" onclick="saveChanges()">Save</button>
+        
+        <div class="download-wrapper">
+            <form method="post" id="downloadForm" action="{% url 'generate_pdf' %}" target="pdfDownloadFrame">
+                {% csrf_token %}
+                <input type="hidden" name="doc_type" value="{{ doc_type }}">
+                <input type="hidden" name="recipient_name" id="formName">
+                <input type="hidden" name="start_date" id="formStartDate">
+                <input type="hidden" name="end_date" id="formEndDate">
+                <input type="hidden" name="verification_code" id="formVerificationCode">
+                
+                <button type="button" class="btn download-btn" onclick="prepareDownload()">
+                    Download PDF
+                </button>
+            </form>
+            <iframe name="pdfDownloadFrame" style="display: none;"></iframe>
+        </div>
+    </div>
+
+    <iframe name="hiddenFrame" style="display:none;"></iframe>
+    {% endif %}
+
+    <script>
+        // Editing functions
+        function toggleEdit() {
+            const editables = document.querySelectorAll('.editable');
+            editables.forEach(field => {
+                field.contentEditable = 'true';
+                field.style.border = '1px dashed #ccc';
+            });
+            document.getElementById('editButton').style.display = 'none';
+            document.getElementById('saveButton').style.display = 'inline-block';
+        }
+
+        function saveChanges() {
+            const editables = document.querySelectorAll('.editable');
+            editables.forEach(field => {
+                field.contentEditable = 'false';
+                field.style.border = 'none';
+            });
+            document.getElementById('editButton').style.display = 'inline-block';
+            document.getElementById('saveButton').style.display = 'none';
+        }
+
+        function prepareDownload() {
+        // Update all form fields from editable content
+        const fields = {
+            'recipient_name': document.querySelector('[data-field="recipient_name"]'),
+            'start_date': document.querySelector('[data-field="start_date"]'),
+            'end_date': document.querySelector('[data-field="end_date"]'),
+            'verification_code': document.querySelector('[data-field="verification_code"]')
+        };
+
+        // Update hidden inputs
+        document.getElementById('formName').value = fields.recipient_name?.innerText.trim() || '';
+        document.getElementById('formStartDate').value = fields.start_date?.innerText.trim() || '';
+        document.getElementById('formEndDate').value = fields.end_date?.innerText.trim() || '';
+        document.getElementById('formVerificationCode').value = fields.verification_code?.innerText.trim() || '';
+
+        // Submit the form
+        const form = document.getElementById('downloadForm');
+        form.submit();
+
+        // Start checking for download completion
+        checkDownloadStatus();
+    }
+
+    function checkDownloadStatus() {
+        let checks = 0;
+        const maxChecks = 10; // 10 seconds timeout
+        const interval = setInterval(() => {
+            checks++;
+            const cookieFound = document.cookie.split(';').some(cookie => {
+                return cookie.trim().startsWith('download_complete=');
+            });
+
+            if (cookieFound || checks >= maxChecks) {
+                clearInterval(interval);
+                document.cookie = 'download_complete=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                if (checks < maxChecks) {
+                    window.location.href = "{% url 'success' %}";
+                }
+            }
+        }, 1000);
+    }
+
+</script>
+</body>
+</html>
